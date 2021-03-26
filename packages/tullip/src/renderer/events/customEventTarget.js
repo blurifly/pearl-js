@@ -1,0 +1,2 @@
+
+Element.prototype.extendEvents = {}

@@ -1,0 +1,24 @@
+{
+  "name": "crane",
+  "version": "1.0.0",
+  "description": "A Javascript library for building Browser User Interfaces.",
+  "main": "index.js",
+  "browser": "umd/crane.production.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jim-junior/crane-ui.git"
+  },
+  "keywords": [
+    "DOM",
+    "User-interface",
+    "UX",
+    "UI",
+    "DOM-Manipulation"
+  ],
+  "author": "Beingana Jim Junior",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jim-junior/crane-ui/issues"
+  },
+  "homepage": "https://github.com/jim-junior/crane-ui#readme"
+}

@@ -1,0 +1,17 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "ie": "11",
+          "node": "current"
+        },
+        "loose": true
+      }
+    ]
+  ],
+  "plugins":  [
+    [ "@babel/plugin-transform-classes", { "loose": true } ]
+  ]
+}

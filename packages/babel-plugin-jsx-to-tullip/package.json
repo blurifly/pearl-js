@@ -1,0 +1,16 @@
+{
+  "name": "babel-plugin-jsx-to-crane",
+  "version": "1.0.0",
+  "description": "Babel plugin to transform jsx to Crane-UI functions.",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "keywords": [
+    "babel",
+    "jsx",
+    "crane-ui"
+  ],
+  "author": "Beingana Jim Junior",
+  "license": "MIT"
+}

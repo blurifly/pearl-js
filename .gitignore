@@ -1,0 +1,20 @@
+
+# node_modules
+node_modules
+/.pnp
+.pnp.js
+
+# text editor folders
+.vs
+.vscode
+
+comand.txt
+
+*.log
+
+
+# builds
+
+packages/tullip/umd/
+packages/tullip/cjs/
+packages/babel-plugin-jsx-to-tullip/lib

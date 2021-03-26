@@ -1,0 +1,13 @@
+tests/
+
+# build output
+lib/
+dist/
+packages/crane/cjs
+packages/crane/umd
+
+
+scripts/
+
+# node modules
+node_modules/
