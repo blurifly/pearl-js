@@ -1,12 +1,12 @@
 {
-  "name": "crane",
+  "name": "tullip",
   "version": "1.0.0",
   "description": "A Javascript library for building Browser User Interfaces.",
   "main": "index.js",
   "browser": "umd/crane.production.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jim-junior/crane-ui.git"
+    "url": "git+https://github.com/jim-junior/tullip.git"
   },
   "keywords": [
     "DOM",

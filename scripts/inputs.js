@@ -27,20 +27,20 @@ module.exports = [
     output: [
       {
         format: 'umd',
-        file: 'umd/crane.development.js'
+        file: 'umd/tullip.development.js'
       },
       {
         format: 'umd',
-        file: 'umd/crane.production.js',
+        file: 'umd/tullip.production.js',
         compress: true
       },
       {
         format: 'cjs',
-        file: 'cjs/crane.development.js'
+        file: 'cjs/tullip.development.js'
       },
       {
         format: 'cjs',
-        file: 'cjs/crane.production.js',
+        file: 'cjs/tullip.production.js',
         compress: true
       }
     ],
