@@ -1,9 +1,9 @@
 {
-  "name": "pearl-js",
-  "version": "1.0.0",
+  "name": "@pearl-js/pearl",
+  "version": "1.0.1",
   "description": "A Javascript library for building Browser User Interfaces.",
   "main": "index.js",
-  "browser": "umd/crane.production.js",
+  "browser": "umd/pearljs.production.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jim-junior/pearl-js.git"
