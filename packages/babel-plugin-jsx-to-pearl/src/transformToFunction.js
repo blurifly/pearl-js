@@ -34,7 +34,7 @@ export function TransformToCreateComponent(tag, attributes) {
   }
   return t.callExpression(
     t.memberExpression(
-      t.identifier("X"),
+      t.identifier("Pearl"),
       t.identifier("createComponent"),
       false
     ),
@@ -91,7 +91,7 @@ export function TransformToCreateElement(tag, attributes, events, children) {
   }
   return t.callExpression(
     t.memberExpression(
-      t.identifier("X"),
+      t.identifier("Pearl"),
       t.identifier("createElement"),
       false
     ),

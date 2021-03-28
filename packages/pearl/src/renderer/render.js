@@ -13,6 +13,8 @@ function renderElement({ tag, attributes = {}, events = {}, children = [] }) {
       $el.setAttribute(k, evaluateStyleTag(v));
     } else if (k === 'ref') {
       $el.EXTREME$CONFIG.ref = v
+    } else if (k === 'className') {
+      $el.setAttribute('class', v)
     } else {
       $el.setAttribute(k, v);
     }

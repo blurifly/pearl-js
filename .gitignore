@@ -15,6 +15,6 @@ comand.txt
 
 # builds
 
-packages/tullip/umd/
-packages/tullip/cjs/
-packages/babel-plugin-jsx-to-tullip/lib
+packages/pearl/umd/
+packages/pearl/cjs/
+packages/babel-plugin-jsx-to-pearl/lib

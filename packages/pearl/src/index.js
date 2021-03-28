@@ -18,7 +18,7 @@ export * from "./utils/objectAssign";
     *
     * Learn more at the official Documentation: {@link https://www.cranom.com}
     */
-const Crane = {
+const Pearl = {
   render,
   createElement,
   append,
@@ -26,5 +26,5 @@ const Crane = {
   createComponent,
   version
 }
-export default Crane
+export default Pearl
 

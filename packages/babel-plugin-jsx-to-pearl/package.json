@@ -1,7 +1,7 @@
 {
-  "name": "babel-plugin-jsx-to-crane",
+  "name": "babel-plugin-jsx-to-pearl",
   "version": "1.0.0",
-  "description": "Babel plugin to transform jsx to Crane-UI functions.",
+  "description": "Babel plugin to transform jsx to Pearl JS functions.",
   "main": "lib/index.js",
   "directories": {
     "lib": "lib"

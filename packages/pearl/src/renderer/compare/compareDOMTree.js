@@ -12,10 +12,7 @@ const zip = (xs, ys) => {
 };
 
 const diffAttrs = (oldAttrs = {}, newAttrs = {}) => {
-  //console.log(oldAttrs)
-  //console.log(newAttrs)
   const patches = [];
-  // setting newAttrs
   for (const [k, v] of Object.entries(newAttrs)) {
 
     patches.push($node => {
@@ -23,6 +20,8 @@ const diffAttrs = (oldAttrs = {}, newAttrs = {}) => {
         $node.setAttribute(k, evaluateStyleTag(v));
       } else if (k === 'ref') {
         $node.EXTREME$CONFIG.ref = v
+      } else if (k === 'className') {
+        $node.setAttribute('class', v)
       } else {
         $node.setAttribute(k, v);
       }
@@ -136,9 +135,9 @@ export function compareDomTrees(oldDomTree, newDomTree) {
 
   if (oldDomTree.tagName !== newDomTree.tagName) {
     return $node => {
-      const $newNode = render(newDomTree);
-      $node.replaceWith($newNode);
-      return $newNode;
+      const newNode = render(newDomTree);
+      $node.replaceWith(newNode);
+      return newNode;
     };
   }
 
@@ -149,13 +148,13 @@ export function compareDomTrees(oldDomTree, newDomTree) {
   /**
   * @param {HTMLElement} $node - root node for the component
   */
-  function returnFunc($node) {
-    patchAttrs($node);
-    patchChildren($node);
-    patchEvents($node)
-    return $node;
+  function returnFunc(node) {
+    patchAttrs(node);
+    patchChildren(node);
+    patchEvents(node)
+    return node;
   }
-  return $node => {
-    return returnFunc($node)
+  return node => {
+    return returnFunc(node)
   };
 }

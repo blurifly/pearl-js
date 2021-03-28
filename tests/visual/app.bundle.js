@@ -1,20 +1,21 @@
-class Card extends X.Component {
+class Card extends Pearl.Component {
   render() {
-    return X.createElement("div", {
+    return Pearl.createElement("div", {
       attributes: {
+        id: "card",
         className: "card"
       },
       events: {},
-      children: ["\n      ", X.createElement("h2", {
+      children: ["\n      ", Pearl.createElement("h2", {
         attributes: {},
         events: {},
         children: ["Cranom INC"]
-      }), "\n      ", X.createElement("div", {
+      }), "\n      ", Pearl.createElement("div", {
         attributes: {
           className: "pers"
         },
         events: {},
-        children: ["\n        ", X.createElement("h3", {
+        children: ["\n        ", Pearl.createElement("p", {
           attributes: {
             className: "card_name"
           },
@@ -27,7 +28,7 @@ class Card extends X.Component {
 
 }
 
-class BusinessCard extends X.Component {
+class BusinessCard extends Pearl.Component {
   constructor() {
     super();
     this.state = {
@@ -38,26 +39,27 @@ class BusinessCard extends X.Component {
   }
 
   render() {
-    return X.createElement("div", {
+    return Pearl.createElement("div", {
       attributes: {
+        id: "gg",
         className: "cover"
       },
       events: {},
-      children: ["\n      ", X.createElement("div", {
+      children: ["\n      ", Pearl.createElement("div", {
         attributes: {
           className: "form"
         },
         events: {},
-        children: ["\n        ", X.createElement("div", {
+        children: ["\n        ", Pearl.createElement("div", {
           attributes: {
             className: "name"
           },
           events: {},
-          children: ["\n          ", X.createElement("span", {
+          children: ["\n          ", Pearl.createElement("span", {
             attributes: {},
             events: {},
             children: ["FirstName: "]
-          }), "\n          ", X.createElement("input", {
+          }), "\n          ", Pearl.createElement("input", {
             attributes: {
               type: "text",
               name: "name",
@@ -72,16 +74,16 @@ class BusinessCard extends X.Component {
             },
             children: []
           }), "\n        "]
-        }), "\n        ", X.createElement("div", {
+        }), "\n        ", Pearl.createElement("div", {
           attributes: {
             className: "title"
           },
           events: {},
-          children: ["\n          ", X.createElement("span", {
+          children: ["\n          ", Pearl.createElement("span", {
             attributes: {},
             events: {},
             children: ["Title: "]
-          }), "\n          ", X.createElement("input", {
+          }), "\n          ", Pearl.createElement("input", {
             attributes: {
               type: "text",
               name: "name",
@@ -96,16 +98,16 @@ class BusinessCard extends X.Component {
             },
             children: []
           }), "\n        "]
-        }), "\n        ", X.createElement("div", {
+        }), "\n        ", Pearl.createElement("div", {
           attributes: {
             className: "date"
           },
           events: {},
-          children: ["\n          ", X.createElement("span", {
+          children: ["\n          ", Pearl.createElement("span", {
             attributes: {},
             events: {},
             children: ["Date Of Birth: "]
-          }), "\n          ", X.createElement("input", {
+          }), "\n          ", Pearl.createElement("input", {
             attributes: {
               type: "date",
               name: "name",
@@ -121,7 +123,7 @@ class BusinessCard extends X.Component {
             children: []
           }), "\n        "]
         }), "\n      "]
-      }), "\n      ", X.createComponent(BusinessCard, {
+      }), "\n      ", Pearl.createComponent(Card, {
         name: this.state.name
       }), "\n    "]
     });
@@ -129,9 +131,9 @@ class BusinessCard extends X.Component {
 
 }
 
-const App = X.createElement("div", {
+const App = Pearl.createElement("div", {
   attributes: {},
   events: {},
-  children: [X.createComponent(BusinessCard, {})]
+  children: [Pearl.createComponent(BusinessCard, {})]
 });
-X.append(App, document.getElementById('root'), () => console.log('App has mounted'));
+Pearl.append(App, document.getElementById('root'), () => console.log('App has mounted'));

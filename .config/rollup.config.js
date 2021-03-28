@@ -12,27 +12,27 @@ const devConfig = {
   },
   plugins: [
     babel({
-      plugins: ["@babel/plugin-syntax-jsx", "./packages/babel-plugin-jsx-to-tullip/lib/index"],
+      plugins: ["@babel/plugin-syntax-jsx", "./packages/babel-plugin-jsx-to-pearl/lib/index"],
       babelHelpers: 'bundled'
     })
   ]
 }
 
 const _devConfig = {
-  input: 'packages/tullip/src/index.js',
+  input: 'packages/pearl/src/index.js',
   output: {
     format: 'umd',
-    name: 'X',
+    name: 'Pearl',
     file: 'tests/visual/main.js'
   }
 }
 
 const pluginConfig = {
-  input: 'packages/babel-plugin-jsx-to-tullip/src/index.js',
+  input: 'packages/babel-plugin-jsx-to-pearl/src/index.js',
   output: {
     format: 'cjs',
     exports: "default",
-    file: 'packages/babel-plugin-jsx-to-tullip/lib/index.js'
+    file: 'packages/babel-plugin-jsx-to-pearl/lib/index.js'
   },
   plugins: [
     babel({

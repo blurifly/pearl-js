@@ -1,7 +1,7 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.X = factory());
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Pearl = factory());
 }(this, (function () { 'use strict';
 
   let version = '1.0.0';
@@ -135,6 +135,8 @@
         $el.setAttribute(k, evaluateStyleTag(v));
       } else if (k === 'ref') {
         $el.EXTREME$CONFIG.ref = v;
+      } else if (k === 'className') {
+        $el.setAttribute('class', v);
       } else {
         $el.setAttribute(k, v);
       }
@@ -185,10 +187,7 @@
   };
 
   const diffAttrs = (oldAttrs = {}, newAttrs = {}) => {
-    //console.log(oldAttrs)
-    //console.log(newAttrs)
     const patches = [];
-    // setting newAttrs
     for (const [k, v] of Object.entries(newAttrs)) {
 
       patches.push($node => {
@@ -196,6 +195,8 @@
           $node.setAttribute(k, evaluateStyleTag(v));
         } else if (k === 'ref') {
           $node.EXTREME$CONFIG.ref = v;
+        } else if (k === 'className') {
+          $node.setAttribute('class', v);
         } else {
           $node.setAttribute(k, v);
         }
@@ -309,9 +310,9 @@
 
     if (oldDomTree.tagName !== newDomTree.tagName) {
       return $node => {
-        const $newNode = render(newDomTree);
-        $node.replaceWith($newNode);
-        return $newNode;
+        const newNode = render(newDomTree);
+        $node.replaceWith(newNode);
+        return newNode;
       };
     }
 
@@ -322,14 +323,14 @@
     /**
     * @param {HTMLElement} $node - root node for the component
     */
-    function returnFunc($node) {
-      patchAttrs($node);
-      patchChildren($node);
-      patchEvents($node);
-      return $node;
+    function returnFunc(node) {
+      patchAttrs(node);
+      patchChildren(node);
+      patchEvents(node);
+      return node;
     }
-    return $node => {
-      return returnFunc($node)
+    return node => {
+      return returnFunc(node)
     };
   }
 
@@ -343,17 +344,8 @@
   * @param {object} tree - Tree
   */
   function initialRender(root, tree) {
-    let replacedElement = document.createElement('div');
+    let replacedElement = render(tree);
     root.appendChild(replacedElement);
-    let dummyTree = {
-      tag: 'dummytag',
-      attributes: {},
-      events: {},
-      children: [],
-      type: 'element'
-    };
-    let compareInitialDom = compareDomTrees(dummyTree, tree);
-    replacedElement = compareInitialDom(replacedElement);
   }
 
   /**
@@ -582,7 +574,7 @@
       *
       * Learn more at the official Documentation: {@link https://www.cranom.com}
       */
-  const Crane = {
+  const Pearl = {
     render,
     createElement,
     append,
@@ -591,6 +583,6 @@
     version
   };
 
-  return Crane;
+  return Pearl;
 
 })));

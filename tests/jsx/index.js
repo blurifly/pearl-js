@@ -1,17 +1,17 @@
 
 
-class Card extends X.Component {
+class Card extends Pearl.Component {
   render() {
-    return <div className="card">
+    return <div id="card" className="card">
       <h2>Cranom INC</h2>
       <div className="pers">
-        <h3 className="card_name">{this.props.name}</h3>
+        <p className="card_name">{this.props.name}</p>
       </div>
     </div>
   }
 }
 
-class BusinessCard extends X.Component {
+class BusinessCard extends Pearl.Component {
   constructor() {
     super()
     this.state = {
@@ -21,7 +21,7 @@ class BusinessCard extends X.Component {
     }
   }
   render() {
-    return <div className="cover">
+    return <div id="gg" className="cover">
       <div className="form">
         <div className="name">
           <span>FirstName: </span>
@@ -42,7 +42,7 @@ class BusinessCard extends X.Component {
           }} />
         </div>
       </div>
-      <BusinessCard name={this.state.name} />
+      <Card name={this.state.name} />
     </div>
   }
 }
@@ -51,4 +51,4 @@ const App = <div><BusinessCard /></div>
 
 
 
-X.append(App, document.getElementById('root'), () => console.log('App has mounted'))
+Pearl.append(App, document.getElementById('root'), () => console.log('App has mounted'))

@@ -7,7 +7,7 @@ let aqua = chalk.rgb(0, 255, 255)
 const log = console.log
 
 log(`
-      ${aqua('REFLEX COMMANDS')}
+      ${aqua('PEARL COMMANDS')}
     ${chalk.gray('run script')} ${chalk.underline.yellow('build')}
 `)
 

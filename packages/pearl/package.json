@@ -1,12 +1,12 @@
 {
-  "name": "tullip",
+  "name": "pearl-js",
   "version": "1.0.0",
   "description": "A Javascript library for building Browser User Interfaces.",
   "main": "index.js",
   "browser": "umd/crane.production.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jim-junior/tullip.git"
+    "url": "git+https://github.com/jim-junior/pearl-js.git"
   },
   "keywords": [
     "DOM",
@@ -18,7 +18,7 @@
   "author": "Beingana Jim Junior",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jim-junior/crane-ui/issues"
+    "url": "https://github.com/jim-junior/pearl-js/issues"
   },
-  "homepage": "https://github.com/jim-junior/crane-ui#readme"
+  "homepage": "https://github.com/jim-junior/pearl-js#readme"
 }

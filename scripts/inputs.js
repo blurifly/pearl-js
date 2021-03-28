@@ -20,30 +20,30 @@ module.exports = [
         })
       ]
     },
-    name: 'babel-plugin-jsx-to-tullip'
+    name: 'babel-plugin-jsx-to-pearl'
   },
   {
     entry: 'src/index.js',
     output: [
       {
         format: 'umd',
-        file: 'umd/tullip.development.js'
+        file: 'umd/pearljs.development.js'
       },
       {
         format: 'umd',
-        file: 'umd/tullip.production.js',
+        file: 'umd/pearljs.production.js',
         compress: true
       },
       {
         format: 'cjs',
-        file: 'cjs/tullip.development.js'
+        file: 'cjs/pearljs.development.js'
       },
       {
         format: 'cjs',
-        file: 'cjs/tullip.production.js',
+        file: 'cjs/pearljs.production.js',
         compress: true
       }
     ],
-    name: 'Tullip'
+    name: 'Pearl'
   }
 ]
