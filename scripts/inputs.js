@@ -23,7 +23,7 @@ module.exports = [
     name: 'babel-plugin-jsx-to-pearl'
   },
   {
-    entry: 'src/index.ts',
+    entry: 'src/index.js',
     output: [
       {
         format: 'umd',

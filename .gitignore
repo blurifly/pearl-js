@@ -19,5 +19,6 @@ comand.txt
 
 packages/pearl/umd/
 packages/pearl/cjs/
-packages/pearl/**/*.js
+packages/pearl/src/**/*.js
+packages/pearl/src/**/*.d.ts
 packages/babel-plugin-jsx-to-pearl/lib
