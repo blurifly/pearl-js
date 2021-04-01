@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   width="167.64287mm"
+   height="153mm"
+   viewBox="0 0 167.64287 153"
+   version="1.1"
+   id="svg78">
+  <defs
+     id="defs72" />
+  <metadata
+     id="metadata75">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     transform="translate(-21.922619,-74.839279)">
+    <rect
+       style="fill:#000055;stroke-width:0.271816"
+       id="rect80"
+       width="86"
+       height="153"
+       x="21.922619"
+       y="74.839279" />
+    <rect
+       style="fill:#0b0b28;stroke-width:0.313092"
+       id="rect82"
+       width="86"
+       height="153"
+       x="103.56548"
+       y="74.839279" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:73.4162px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#00ccff;stroke-width:0.318646"
+       x="68.281456"
+       y="153.15714"
+       id="text86"
+       transform="scale(0.83033418,1.2043344)"><tspan
+         id="tspan84"
+         x="68.281456"
+         y="153.15714"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#00ccff;stroke-width:0.318646">P L</tspan></text>
+  </g>
+</svg>

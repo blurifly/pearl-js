@@ -4,8 +4,10 @@
 * @param {object} events - an object containing the key as the event and the value as the function
 */
 
-export function appendEvents(node, events) {
-  node.extendEvents = events
+import { PearlDOMElement } from "../../types/PearlTypes"
+
+export function appendEvents(node: PearlDOMElement, events: object ) {
+  node._pearl$config.extendEvents = events
   for (const [k, v] of Object.entries(events)) {
     node.addEventListener(k, v)
   }

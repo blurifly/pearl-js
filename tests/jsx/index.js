@@ -1,53 +1,55 @@
 
+// Instabul, Kampala
+import Pearl from '@pearl-js/pearl'
 
-class Card extends Pearl.Component {
-  render() {
-    return <div id="card" className="card">
-      <h2>Cranom INC</h2>
-      <div className="pers">
-        <p className="card_name">{this.props.name}</p>
-      </div>
-    </div>
-  }
-}
-
-class BusinessCard extends Pearl.Component {
-  constructor() {
-    super()
+class Navbar extends Pearl.Component {
+  constructor(props, context) {
+    super(props, context)
     this.state = {
-      name: '',
-      Title: '',
-      date: ''
+      code: ''
     }
   }
   render() {
-    return <div id="gg" className="cover">
-      <div className="form">
-        <div className="name">
-          <span>FirstName: </span>
-          <input type="text" name="name" value={this.state.name} onInput={(e) => {
-            this.updateState({ name: e.target.value })
-          }} />
-        </div>
-        <div className="title">
-          <span>Title: </span>
-          <input type="text" name="name" value={this.state.Title} onInput={(e) => {
-            this.updateState({ Title: e.target.value })
-          }} />
-        </div>
-        <div className="date">
-          <span>Date Of Birth: </span>
-          <input type="date" name="name" value={this.state.date} onInput={(e) => {
-            this.updateState({ date: e.target.value })
-          }} />
-        </div>
+    return <div className="navbar">
+      <div className="logo">
+        <img className="logo_IMG" src="/logo.png" alt="logo" />
+        <h3 >PEARL JS</h3>
       </div>
-      <Card name={this.state.name} />
+
     </div>
   }
 }
 
-const App = <div><BusinessCard /></div>
+class Editor extends Pearl.Component {
+  constructor(props, context) {
+    super(props, context)
+    this.state = {
+      code: '',
+      container: document.getElementById('preview')
+    }
+  }
+  onChanging(e) {
+    const value = e.target.value
+    this.updateState({
+      code: value
+    })
+    this.state.container.innerHTML = value
+  }
+  render() {
+    return <div className="editor">
+      <textarea name="textea" onInput={(e) => {
+        this.onChanging(e)
+      }} className="editor_ground" id="tt" cols="30" rows="10"></textarea>
+
+    </div>
+  }
+}
+
+
+const App = <div>
+  <Navbar />
+  <Editor />
+</div>
 
 
 

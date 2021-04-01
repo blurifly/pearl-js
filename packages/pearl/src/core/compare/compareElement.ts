@@ -3,7 +3,7 @@
 * @param  oldElement - The previous version of the Element
 * @param  newElement - The new version of the Element
 */
-function compareElement(oldElement, newElement) {
+function compareElement(oldElement: { tagName: any; }, newElement: { tagName: any; }) {
   if (typeof oldElement === 'string' ||
     typeof newElement === 'string') {
     if (oldElement !== newElement) {
@@ -22,6 +22,6 @@ function compareElement(oldElement, newElement) {
   }
 }
 
-const compareAttrs = (oldAttrs, newAttrs) => {
+const compareAttrs = (oldAttrs: any, newAttrs: any) => {
   return newAttrs;
 };

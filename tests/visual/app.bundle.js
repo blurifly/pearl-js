@@ -1,139 +1,105 @@
-class Card extends Pearl.Component {
-  render() {
-    return Pearl.createElement("div", {
-      attributes: {
-        id: "card",
-        className: "card"
-      },
-      events: {},
-      children: ["\n      ", Pearl.createElement("h2", {
-        attributes: {},
-        events: {},
-        children: ["Cranom INC"]
-      }), "\n      ", Pearl.createElement("div", {
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('@pearl-js/pearl')) :
+  typeof define === 'function' && define.amd ? define(['@pearl-js/pearl'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.Pearl));
+}(this, (function (Pearl) { 'use strict';
+
+  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+  var Pearl__default = /*#__PURE__*/_interopDefaultLegacy(Pearl);
+
+  // Instabul, Kampala
+
+  class Navbar extends Pearl__default['default'].Component {
+    constructor(props, context) {
+      super(props, context);
+      this.state = {
+        code: ''
+      };
+    }
+
+    render() {
+      return Pearl__default['default'].createElement("div", {
         attributes: {
-          className: "pers"
+          className: "navbar"
         },
         events: {},
-        children: ["\n        ", Pearl.createElement("p", {
+        children: [Pearl__default['default'].createElement("div", {
           attributes: {
-            className: "card_name"
+            className: "logo"
           },
           events: {},
-          children: [this.props.name]
-        }), "\n      "]
-      }), "\n    "]
-    });
+          children: [Pearl__default['default'].createElement("img", {
+            attributes: {
+              className: "logo_IMG",
+              src: "/logo.png",
+              alt: "logo"
+            },
+            events: {},
+            children: []
+          }), Pearl__default['default'].createElement("h3", {
+            attributes: {},
+            events: {},
+            children: ["PEARL JS"]
+          })]
+        })]
+      });
+    }
+
   }
 
-}
+  class Editor extends Pearl__default['default'].Component {
+    constructor(props, context) {
+      super(props, context);
+      this.state = {
+        code: '',
+        container: document.getElementById('preview')
+      };
+    }
 
-class BusinessCard extends Pearl.Component {
-  constructor() {
-    super();
-    this.state = {
-      name: '',
-      Title: '',
-      date: ''
-    };
-  }
+    onChanging(e) {
+      const value = e.target.value;
+      this.updateState({
+        code: value
+      });
+      this.state.container.innerHTML = value;
+    }
 
-  render() {
-    return Pearl.createElement("div", {
-      attributes: {
-        id: "gg",
-        className: "cover"
-      },
-      events: {},
-      children: ["\n      ", Pearl.createElement("div", {
+    render() {
+      return Pearl__default['default'].createElement("div", {
         attributes: {
-          className: "form"
+          className: "editor"
         },
         events: {},
-        children: ["\n        ", Pearl.createElement("div", {
+        children: [Pearl__default['default'].createElement("textarea", {
           attributes: {
-            className: "name"
+            name: "textea",
+            className: "editor_ground",
+            id: "tt",
+            cols: "30",
+            rows: "10"
           },
-          events: {},
-          children: ["\n          ", Pearl.createElement("span", {
-            attributes: {},
-            events: {},
-            children: ["FirstName: "]
-          }), "\n          ", Pearl.createElement("input", {
-            attributes: {
-              type: "text",
-              name: "name",
-              value: this.state.name
-            },
-            events: {
-              input: e => {
-                this.updateState({
-                  name: e.target.value
-                });
-              }
-            },
-            children: []
-          }), "\n        "]
-        }), "\n        ", Pearl.createElement("div", {
-          attributes: {
-            className: "title"
+          events: {
+            input: e => {
+              this.onChanging(e);
+            }
           },
-          events: {},
-          children: ["\n          ", Pearl.createElement("span", {
-            attributes: {},
-            events: {},
-            children: ["Title: "]
-          }), "\n          ", Pearl.createElement("input", {
-            attributes: {
-              type: "text",
-              name: "name",
-              value: this.state.Title
-            },
-            events: {
-              input: e => {
-                this.updateState({
-                  Title: e.target.value
-                });
-              }
-            },
-            children: []
-          }), "\n        "]
-        }), "\n        ", Pearl.createElement("div", {
-          attributes: {
-            className: "date"
-          },
-          events: {},
-          children: ["\n          ", Pearl.createElement("span", {
-            attributes: {},
-            events: {},
-            children: ["Date Of Birth: "]
-          }), "\n          ", Pearl.createElement("input", {
-            attributes: {
-              type: "date",
-              name: "name",
-              value: this.state.date
-            },
-            events: {
-              input: e => {
-                this.updateState({
-                  date: e.target.value
-                });
-              }
-            },
-            children: []
-          }), "\n        "]
-        }), "\n      "]
-      }), "\n      ", Pearl.createComponent(Card, {
-        name: this.state.name
-      }), "\n    "]
-    });
+          children: []
+        })]
+      });
+    }
+
   }
 
-}
+  const App = Pearl__default['default'].createElement("div", {
+    attributes: {},
+    events: {},
+    children: [Pearl__default['default'].createComponent(Navbar, {
+      children: []
+    }), Pearl__default['default'].createComponent(Editor, {
+      children: []
+    })]
+  });
+  Pearl__default['default'].append(App, document.getElementById('root'), () => console.log('App has mounted'));
 
-const App = Pearl.createElement("div", {
-  attributes: {},
-  events: {},
-  children: [Pearl.createComponent(BusinessCard, {})]
-});
-Pearl.append(App, document.getElementById('root'), () => console.log('App has mounted'));
+})));

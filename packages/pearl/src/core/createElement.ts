@@ -1,3 +1,5 @@
+import type { PearlElement } from "../types/PearlTypes";
+
 
 /**
 * Creates a new Element
@@ -9,16 +11,14 @@
 * @param {Symbol} options.ref -
 * @return {object}
 */
-function createElement(tag, { attributes = {}, events = {}, children = [] }) {
-  let $el = Object.create(null)
-  Object.assign($el, {
+function createElement(tag: keyof HTMLElementTagNameMap, { attributes = {}, events = {}, children = [] }) :PearlElement {
+  return {
     tag,
     attributes,
     events,
     children,
     type: 'element'
-  })
-  return $el
+  }
 }
 
 

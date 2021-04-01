@@ -9,6 +9,7 @@
         "ecmaVersion": 12,
         "sourceType": "module"
     },
+    "ignorePatterns": ["**/*.jsx"],
     "rules": {
       "class-methods-use-this": "error",
       "indent": ["error", 2],

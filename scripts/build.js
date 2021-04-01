@@ -5,9 +5,10 @@ const INPUTS = require('./inputs');
 const terser = require('rollup-plugin-terser')
 let aqua = chalk.rgb(0, 255, 255)
 const log = console.log
+const pkg = require('../package.json')
 
 log(`
-      ${aqua('PEARL COMMANDS')}
+      ${aqua(`PEARL JS v${pkg.version}`)}
     ${chalk.gray('run script')} ${chalk.underline.yellow('build')}
 `)
 

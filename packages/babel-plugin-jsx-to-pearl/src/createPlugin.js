@@ -30,6 +30,7 @@ export function TransformSyntax() {
             TransformToCreateComponent(
               ElementName,
               openingElement.attributes,
+              _JSXElement.children
             )
           )
         }

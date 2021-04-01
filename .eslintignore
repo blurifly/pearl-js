@@ -3,11 +3,15 @@ tests/
 # build output
 lib/
 dist/
-packages/crane/cjs
-packages/crane/umd
+packages/pearl/umd/
+packages/pearl/cjs/
+packages/babel-plugin-jsx-to-pearl/lib
 
 
 scripts/
 
 # node modules
 node_modules/
+
+# jsx
+**/*.jsx

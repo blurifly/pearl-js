@@ -20,9 +20,12 @@ You should add it to the babel configuration right after `@babel/plugin-syntax-j
 ```json
 // .babelrc
 {
+  ...
   "plugins": [
+    ...
     "@babel/plugin-syntax-jsx",
     "babel-plugin-jsx-to-pearl"
+    ...
   ]
 }
 

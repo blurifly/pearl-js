@@ -1,9 +1,11 @@
+
+import { getPropety } from '../attributes/evaluateAttributes';
 import { evaluateStyleTag } from '../attributes/index';
 import { compareEventListeners } from '../events/compareEvents';
 import { render } from '../render';
 
 
-const zip = (xs, ys) => {
+const zip = (xs: string | any[], ys: string | any[]) => {
   const zipped = [];
   for (let i = 0; i < Math.min(xs.length, ys.length); i++) {
     zipped.push([xs[i], ys[i]]);
@@ -12,19 +14,18 @@ const zip = (xs, ys) => {
 };
 
 const diffAttrs = (oldAttrs = {}, newAttrs = {}) => {
-  const patches = [];
+  const patches: { ($node: any): any; ($node: any): any; }[] = [];
   for (const [k, v] of Object.entries(newAttrs)) {
 
-    patches.push($node => {
-      if (k === 'style') {
-        $node.setAttribute(k, evaluateStyleTag(v));
-      } else if (k === 'ref') {
-        $node.EXTREME$CONFIG.ref = v
-      } else if (k === 'className') {
-        $node.setAttribute('class', v)
+    patches.push(($node: { setAttribute: (arg0: string, arg1: unknown) => void; classList: { add: (arg0: unknown) => void; }; }) => {
+      if (k === "style") {
+        $node.setAttribute(k, evaluateStyleTag(v))
+      } else if (k.toLowerCase() === "classname") {
+        $node.classList.add(v)
       } else {
-        $node.setAttribute(k, v);
+        $node.setAttribute(getPropety(k), v)
       }
+
 
       return $node;
     });
@@ -33,14 +34,18 @@ const diffAttrs = (oldAttrs = {}, newAttrs = {}) => {
   // removing attrs
   for (const k in oldAttrs) {
     if (!(k in newAttrs)) {
-      patches.push($node => {
-        $node.removeAttribute(k);
+      patches.push(($node: { removeAttribute: (arg0: string) => void; }) => {
+        if (k.toLowerCase() === "className") {
+          $node.removeAttribute('class')
+        } else {
+          $node.removeAttribute(getPropety(k))
+        }
         return $node;
       });
     }
   }
 
-  return $node => {
+  return ($node: any) => {
     for (const patch of patches) {
       patch($node);
     }
@@ -49,11 +54,11 @@ const diffAttrs = (oldAttrs = {}, newAttrs = {}) => {
 };
 
 
-const diffChildren = (oldVChildren, newVChildren) => {
-  const childPatches = [];
+const diffChildren = (oldVChildren: any[], newVChildren: string | any[]) => {
+  const childPatches: (($node: any) => any)[] = [];
   let elementType = 'element'
   let componentType = 'IS_X_COMPONENT'
-  oldVChildren.forEach((oldVChild, i) => {
+  oldVChildren.forEach((oldVChild: { type: string; makeChild: () => any; }, i: number) => {
 
     let newVChild = newVChildren[i]
     let oldChild;
@@ -76,22 +81,24 @@ const diffChildren = (oldVChildren, newVChildren) => {
     if (typeof newVChild === 'string') {
       newChild = newVChild
     }
-    /* console.log(oldVChild)
-    console.log(oldChild) */
 
     // eslint-disable-next-line no-use-before-define
     childPatches.push(compareDomTrees(oldChild, newChild));
   });
 
-  const additionalPatches = [];
+  const additionalPatches: (($node: any) => any)[] = [];
   for (const additionalVChild of newVChildren.slice(oldVChildren.length)) {
-    additionalPatches.push($node => {
-      $node.appendChild(render(additionalVChild));
+    additionalPatches.push(($node: { appendChild: () => void; }) => {
+      let child = render(additionalVChild)
+      if (child !== null) {
+        $node.appendChild();
+      }
+
       return $node;
     });
   }
 
-  return $parent => {
+  return ($parent: { childNodes: any; }) => {
     // since childPatches are expecting the $child, not $parent,
     // we cannot just loop through them and call patch($parent)
     for (const [patch, $child] of zip(childPatches, $parent.childNodes)) {
@@ -105,16 +112,10 @@ const diffChildren = (oldVChildren, newVChildren) => {
   };
 };
 
-export function compareDomTrees(oldDomTree, newDomTree) {
-
-  /* console.log(oldDomTree)
-  console.log(newDomTree) */
-  if (oldDomTree === undefined) {
-    throw new Error('Old DOM Tree seems to be undefined')
-  }
+export function compareDomTrees(oldDomTree: { tagName: any; attributes: {} | undefined; children: any; events: any; }, newDomTree: { tagName: any; attributes: {} | undefined; children: any; events: any; } | undefined) {
 
   if (newDomTree === undefined) {
-    return $node => {
+    return ($node: { remove: () => void; }) => {
       $node.remove();
       return undefined;
     }
@@ -122,7 +123,7 @@ export function compareDomTrees(oldDomTree, newDomTree) {
 
   if (typeof oldDomTree === 'string' ||
     typeof newDomTree === 'string') {
-    return $node => {
+    return ($node: { nodeValue: any; replaceWith: (arg0: any) => void; }) => {
       if ($node.nodeValue !== newDomTree) {
         const $newNode = render(newDomTree);
         $node.replaceWith($newNode);
@@ -134,7 +135,7 @@ export function compareDomTrees(oldDomTree, newDomTree) {
   }
 
   if (oldDomTree.tagName !== newDomTree.tagName) {
-    return $node => {
+    return ($node: { replaceWith: (arg0: any) => void; }) => {
       const newNode = render(newDomTree);
       $node.replaceWith(newNode);
       return newNode;
@@ -148,13 +149,14 @@ export function compareDomTrees(oldDomTree, newDomTree) {
   /**
   * @param {HTMLElement} $node - root node for the component
   */
-  function returnFunc(node) {
+  function returnFunc(node: any) {
     patchAttrs(node);
     patchChildren(node);
     patchEvents(node)
     return node;
   }
-  return node => {
+  return (node: any) => {
     return returnFunc(node)
   };
 }
+

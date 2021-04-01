@@ -1,11 +1,12 @@
 import { compareState } from "./compareState";
 
-export function EvaluateChildren(oldChildren, newChildren) {
+export function EvaluateChildren(oldChildren: any[], newChildren: string | any[]) {
   let children = []
   let elementType = 'element'
   let componentType = 'IS_X_COMPONENT'
 
-  oldChildren.forEach((oldChild, i) => {
+
+  oldChildren.forEach((oldChild: { type: string; }, i: number) => {
     let newChild = newChildren[i]
     if (oldChild.type === newChild.type) {
       if (oldChild.type === elementType && newChild.type === elementType) {
@@ -28,15 +29,11 @@ export function EvaluateChildren(oldChildren, newChildren) {
 
 
 
-export function compareTree(oldDomTree, newDomTree) {
+export function compareTree(oldDomTree: { tagName: any; children: any; }, newDomTree: { tagName: any; children: any; } | undefined) {
 
-  let result = newDomTree
-  /* console.log('result', result)
-    console.log('oldDomTree', oldDomTree) */
+  let result: any = newDomTree
 
-  if (oldDomTree === undefined) {
-    throw new Error('Old DOM Tree seems to be undefined')
-  }
+
 
   if (newDomTree === undefined) {
     return;
@@ -47,8 +44,6 @@ export function compareTree(oldDomTree, newDomTree) {
     if (oldDomTree !== newDomTree) {
       return newDomTree
     } else {
-      // this means that both trees are string
-      // and they have the same values
       return newDomTree;
     }
   }

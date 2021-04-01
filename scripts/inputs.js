@@ -23,7 +23,7 @@ module.exports = [
     name: 'babel-plugin-jsx-to-pearl'
   },
   {
-    entry: 'src/index.js',
+    entry: 'src/index.ts',
     output: [
       {
         format: 'umd',
@@ -44,6 +44,14 @@ module.exports = [
         compress: true
       }
     ],
+    rollupInputOptions: {
+      plugins: [
+        babel.babel({
+          configFile: path.resolve(__dirname, '../.config/.babelrc'),
+          babelHelpers: 'bundled'
+        })
+      ]
+    },
     name: 'Pearl'
   }
 ]

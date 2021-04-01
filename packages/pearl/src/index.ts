@@ -1,15 +1,11 @@
-import { version } from './header'
-export * from './renderer/events/customEventTarget'
-export * from './renderer/element/elementConfig'
+
 import createComponent from "./core/createComponent";
 import createElement from "./core/createElement";
 import append from "./renderer/append";
 import Component from "./renderer/createComponent";
 import { render } from "./renderer/render";
 
-
-
-export * from "./utils/objectAssign";
+let version = '1.0.0'
 /**
     * A Javascript library for building Browser User Interfaces
     * @author Beigana Jim Junior <jimjunior854@outlook.com>

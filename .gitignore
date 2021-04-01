@@ -1,4 +1,7 @@
 
+
+packages/babel-plugin-jsx-to-pearl/test.js
+
 # node_modules
 node_modules
 /.pnp
@@ -12,9 +15,9 @@ comand.txt
 
 *.log
 
-
 # builds
 
 packages/pearl/umd/
 packages/pearl/cjs/
+packages/pearl/**/*.js
 packages/babel-plugin-jsx-to-pearl/lib

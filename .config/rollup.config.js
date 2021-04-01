@@ -7,7 +7,7 @@ import { babel } from '@rollup/plugin-babel';
 const devConfig = {
   input: 'tests/jsx/index.js',
   output: {
-    format: 'esm',
+    format: 'umd',
     file: 'tests/visual/app.bundle.js'
   },
   plugins: [
@@ -18,13 +18,20 @@ const devConfig = {
   ]
 }
 
+
 const _devConfig = {
   input: 'packages/pearl/src/index.js',
   output: {
     format: 'umd',
     name: 'Pearl',
     file: 'tests/visual/main.js'
-  }
+  },
+  plugins: [
+    babel({
+      configFile: path.resolve(__dirname, '.babelrc'),
+      babelHelpers: 'bundled'
+    }),
+  ]
 }
 
 const pluginConfig = {

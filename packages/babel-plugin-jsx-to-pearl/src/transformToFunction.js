@@ -20,8 +20,27 @@ function getEventName(event) {
   return eventName.toLowerCase()
 }
 
-export function TransformToCreateComponent(tag, attributes) {
-  let props = []
+export function TransformToCreateComponent(tag, attributes, children) {
+  let props = []/*
+  console.log(children) */
+  for (let child of children) {
+    if (child.type === 'JSXText') {
+      let hasLettersRegex = /[a-z0-9]/ig;
+      if (child.value.includes('\n') && hasLettersRegex.test(child.value) === false) {
+        let childIndex = children.indexOf(child)
+        children.splice(childIndex, 1)
+      }
+    }
+  }
+  for (let child of children) {
+    if (child.type === 'JSXText') {
+      let Stringchild = t.stringLiteral(child.value)
+      children[children.indexOf(child)] = Stringchild
+    }
+    if (child.type === 'JSXSpreadChild') {
+      console.log(child)
+    }
+  }
   for (let attribute of attributes) {
 
     let attr = t.objectProperty(
@@ -32,6 +51,12 @@ export function TransformToCreateComponent(tag, attributes) {
     )
     props.push(attr)
   }
+
+  let childs = t.objectProperty(
+    t.identifier('children'),
+    t.arrayExpression(children)
+  )
+  props.push(childs)
   return t.callExpression(
     t.memberExpression(
       t.identifier("Pearl"),
@@ -63,6 +88,15 @@ export function TransformToCreateElement(tag, attributes, events, children) {
       false
     )
     attrs.push(attr)
+  }
+  for (let child of children) {
+    if (child.type === 'JSXText') {
+      let hasLettersRegex = /[a-z0-9]/ig;
+      if (child.value.includes('\n') && hasLettersRegex.test(child.value) === false) {
+        let childIndex = children.indexOf(child)
+        children.splice(childIndex, 1)
+      }
+    }
   }
   for (let child of children) {
     if (child.type === 'JSXText') {

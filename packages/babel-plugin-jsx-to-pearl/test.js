@@ -1,16 +1,12 @@
 const babel = require('@babel/core');
 const plugin = require('./lib')
 const code = `
-class Input extends X.Component {
-  constructor() {
-    super()
-  }
-
-  render() {
-      return <span class="jim" onClick={()=>{console.log('')}} >jim <span>Jim</span> dk</span>
-
-  }
-}
+const App = <div>
+  <h1>App</h1>
+  <Route path="/" >
+    <span></span>
+  </Route>
+</div>
 
 `;
 const output = babel.transformSync(code, {
