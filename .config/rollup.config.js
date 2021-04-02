@@ -3,6 +3,9 @@
 
 const path = require('path')
 import { babel } from '@rollup/plugin-babel';
+import AddCustionExtension from '../scripts/plugins/RollupAddExtesion';
+
+
 
 const devConfig = {
   input: 'tests/jsx/index.js',
@@ -13,23 +16,25 @@ const devConfig = {
   plugins: [
     babel({
       plugins: ["@babel/plugin-syntax-jsx", "./packages/babel-plugin-jsx-to-pearl/lib/index"],
-      babelHelpers: 'bundled'
+      babelHelpers: 'bundled',
     })
   ]
 }
 
 
 const _devConfig = {
-  input: 'packages/pearl/src/index.js',
+  input: 'packages/pearl/src/index.ts',
   output: {
     format: 'umd',
     name: 'Pearl',
     file: 'tests/visual/main.js'
   },
   plugins: [
+    AddCustionExtension('.ts'),
     babel({
       configFile: path.resolve(__dirname, '.babelrc'),
-      babelHelpers: 'bundled'
+      babelHelpers: 'bundled',
+      extensions: ['.js', '.jsx', '.es6', '.es', '.mjs', '.ts']
     }),
   ]
 }
@@ -50,7 +55,7 @@ const pluginConfig = {
 }
 
 export default [
-  pluginConfig,
+  //pluginConfig,
   _devConfig,
-  devConfig
+  //devConfig
 ]

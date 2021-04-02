@@ -1,9 +1,9 @@
 /* eslint-disable class-methods-use-this */
 import { Component as C } from "../core/component";
-import { compareTree } from "../core/compare/compareVirtualTree";
-import { compareDomTrees } from "./compare/compareDOMTree";
+import { compareTree } from "../core/UpdateTree";
+import { compareDomTrees } from "./UpdateDom";
 import { createId } from '../core/Selectors';
-import { PearlDOMElement } from "../types/PearlTypes";
+import { PearlDOMElement, PearlElement } from "../types/PearlTypes";
 
 export function getComponentRoot(id: Symbol): PearlDOMElement | null {
   let nodes: PearlDOMElement | null = null
@@ -20,11 +20,7 @@ export function getComponentRoot(id: Symbol): PearlDOMElement | null {
   return nodes
 }
 
-/* function getChildComponentPearlId(child) {
-  if (child.currentTree.type === ) {
 
-  }
-} */
 
 class Component extends C {
   key: any;
@@ -76,8 +72,8 @@ class Component extends C {
     this.currentTree = this.render()
     return this.currentTree
   }
-  render() {
-    return;
+  render() : { tagName: any; children: any; } {
+    return {tagName: 'div', children: 'element'}
   }
 
 }

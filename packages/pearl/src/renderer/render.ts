@@ -1,5 +1,5 @@
-import { evaluateAttributes } from "./attributes/index";
-import { appendEvents } from "./events/appendEvents";
+import { evaluateAttributes } from "./ElementAttributes";
+import { appendEvents } from "./Events";
 import { PearlElement, PearlDOMElement } from "../types/PearlTypes";
 
 function renderElement(element: PearlElement, isComponentRoot = false, componentId = null) {

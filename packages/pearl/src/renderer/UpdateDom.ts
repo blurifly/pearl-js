@@ -1,8 +1,8 @@
 
-import { getPropety } from '../attributes/evaluateAttributes';
-import { evaluateStyleTag } from '../attributes/index';
-import { compareEventListeners } from '../events/compareEvents';
-import { render } from '../render';
+import { getPropety } from './ElementAttributes';
+import { evaluateStyleTag } from './ElementAttributes';
+import { compareEventListeners } from './Events';
+import { render } from './render';
 
 
 const zip = (xs: string | any[], ys: string | any[]) => {
